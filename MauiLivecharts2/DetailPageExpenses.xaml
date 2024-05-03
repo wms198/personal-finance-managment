@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiLivecharts2.DetailPageExpenses"
+             Title="DetaiPage">
+    <!--<ContentPage.Content>
+    </ContentPage.Content>-->
+    <StackLayout>
+        
+        <HorizontalStackLayout>
+            <Label 
+                   FontSize="25"
+                   Margin="0,15,0,30"
+                   x:Name="Headline"/>
+            <Entry 
+                x:Name="preise"
+                Placeholder="Enter text"
+                PlaceholderColor = "IndianRed"
+                MaxLength ="1000"
+                ClearButtonVisibility="WhileEditing"
+                Completed="OnEntryPreis"/>
+        </HorizontalStackLayout>
+        
+        <VerticalStackLayout x:Name="VLayout">
+            <HorizontalStackLayout>
+                <Label Text="On which date?"
+                       FontSize="25"
+                       Margin="0,30"/>
+                <DatePicker 
+                    MinimumDate="01/01/2024"
+                    x:Name="DatePicker"/>
+               <Button 
+                    x:Name="CounterBtn"
+                    Text="Confirm"
+                    Clicked="OnEntryDate" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+            <Entry x:Name="entry"
+                   Placeholder="Date"/>
+            </HorizontalStackLayout>   
+        </VerticalStackLayout>
+        
+        <FlexLayout Margin ="0,10,0,0"
+                    JustifyContent= "SpaceAround" >
+        <Button 
+                Clicked="OnButtonEInsertClicked" 
+                x:Name="ButtonName"/>
+        </FlexLayout>
+ 
+       
+    </StackLayout>
+</ContentPage>
