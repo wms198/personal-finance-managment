@@ -2,5 +2,10 @@ namespace MauiLivecharts2;
 
 public class Grouped_list : List<Transaction>
 { 
-    public Grouped_list(string date, List<Transaction> push_dates) : base(push_dates) {}
+    public DateTime Date { get; set; }
+
+    public Grouped_list(DateTime date, List<Transaction> transactions) : base(transactions)
+    {
+        Date = date;
+    }
 }

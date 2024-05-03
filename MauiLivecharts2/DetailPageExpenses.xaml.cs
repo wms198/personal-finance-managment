@@ -22,10 +22,10 @@ public partial class DetailPageExpenses : ContentPage
     private string updateHeadline = "How do you want to change it?";
     private string bTNInsert = "Insert";
     private string bTNUpdate = "Update";
-    private ListView _listView;
+    private CollectionView _listView;
     private Transaction _transaction;
 
-    public DetailPageExpenses(string category, bool isExpense, ListView listView)
+    public DetailPageExpenses(string category, bool isExpense, CollectionView listView)
     {
         //Insert item
         this.category = category;
@@ -41,7 +41,7 @@ public partial class DetailPageExpenses : ContentPage
         Console.WriteLine(listView.Id);
     }
 
-    public DetailPageExpenses(Transaction transaction, ListView listView)
+    public DetailPageExpenses(Transaction transaction, CollectionView listView)
     {
         //Update item
         InitializeComponent();

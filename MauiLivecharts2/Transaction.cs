@@ -7,7 +7,6 @@ public class Transaction
     private string category;
     private decimal value;
     private DateTime date;
-    private string datum;
     private int id;
     private string imageUrl;
   
@@ -16,13 +15,7 @@ public class Transaction
     {
         this.id = id;
     }
-
-    public Transaction(decimal value, string datum, string imageUrl)
-    {
-        this.datum = datum;
-        this.value = value;
-        this.imageUrl = imageUrl;
-    }
+    
     public Transaction(string category, decimal value, DateTime date, string imageUrl)
     {
         this.category = category;
@@ -81,12 +74,7 @@ public class Transaction
     }
     
     #endregion
-
-    public string Datum
-    {
-        get => datum;
-        set => datum = value ?? throw new ArgumentNullException(nameof(value));
-    }
+    
 }
 public class IntToColorConverter : IValueConverter
 {

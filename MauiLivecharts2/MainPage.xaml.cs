@@ -20,7 +20,7 @@ public partial class MainPage : ContentPage
         InitializeComponent();
         DBtransaction.Verbinden();
         //new_list = DBtransaction.SelectByDate();
-        ListView.ItemsSource = DBtransaction.SelectTransactions();
+        ListView.ItemsSource = DBtransaction.SelectByDate();
         
     }
     

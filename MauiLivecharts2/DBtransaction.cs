@@ -79,7 +79,7 @@ public class DBtransaction
         connection = new MySqlConnection(connectionString);
         connection.Open();
         Console.WriteLine("Connection is successful for Select");
-        string sql = "SELECT * FROM transaction;";
+        string sql = "SELECT * FROM transaction order by date ASC;";
         MySqlCommand command = new MySqlCommand(sql, connection);
         MySqlDataReader reader = command.ExecuteReader();
         List<Transaction> push_dateList = new List<Transaction>();
@@ -89,19 +89,17 @@ public class DBtransaction
             string category =(string)reader["category"];
             decimal value = (decimal)reader["value"];
             DateTime date = (DateTime)reader["date"];
-            string datum = date.ToString();
             string imageUrl = (string)reader["category"]+".png";
             Transaction push_date = new Transaction(id, category, value, date, imageUrl); 
             push_dateList.Add(push_date);
         }
         connection.Dispose();
         Console.WriteLine(push_dateList);
-        var dict= push_dateList.GroupBy(o => o.Datum)
+        var dict= push_dateList.GroupBy(o => o.Date)
             .ToDictionary(g => g.Key, g => g.ToList());
         List<Grouped_list> dateList = new List<Grouped_list>();
-        foreach (KeyValuePair<string, List<Transaction>> item in dict)
+        foreach (KeyValuePair<DateTime, List<Transaction>> item in dict)
         {
-           
             dateList.Add(new Grouped_list(item.Key,new List<Transaction>(item.Value)));
         }
         

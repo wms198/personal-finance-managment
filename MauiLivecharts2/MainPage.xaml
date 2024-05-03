@@ -181,12 +181,74 @@
                 </VerticalStackLayout>
             </HorizontalStackLayout>
             <!-- LIstView  -->
-            <ListView ItemsSource="{Binding Transactions}"
-                      x:Name="ListView"
-                      IsGroupingEnabled="True"
-                      HasUnevenRows="True">
-                
-                <ListView.ItemTemplate>
+            <CollectionView 
+                            x:Name="ListView"
+                            IsGrouped="True">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Date, StringFormat='{0:dd-MM-yy}'}" TextColor="Black" VerticalOptions="CenterAndExpand"
+
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+                            <Grid Padding="0" Margin="10"
+                                  VerticalOptions="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="15" />
+                                    <RowDefinition Height="15" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="3" Grid.Column="0"
+                                       Source="{Binding ImageUrl}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="30"
+                                       WidthRequest="30" 
+                                       HorizontalOptions= "Start"/>
+                                <Label Grid.Row="3" 
+                                       Grid.Column="0"
+                                       Text="{Binding Path=Value}"
+                                       TextColor="{Binding Path=Value, Converter={StaticResource intToColor}}"
+                                       FontAttributes="Italic"
+                                       HorizontalOptions="End" />
+                                <ImageButton Grid.Row="3" 
+                                             Grid.Column="1"
+                                             Grid.ColumnSpan="2"
+                                             Padding="3.5"
+                                             Source="modify.png"
+                                             HeightRequest="-30"
+                                             WidthRequest="-30"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="End"
+                                             Clicked="OnButtonUpdateClicked"/>
+                                <ImageButton Grid.Row="3" 
+                                             Grid.Column="3"
+                                             Grid.ColumnSpan="2"
+                                             Padding="2.5"
+                                             Source="bin.png"
+                                             HeightRequest="0"
+                                             WidthRequest="0"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="End"
+                                             CommandParameter="{Binding Id}"
+                                             Clicked="OnButtonDeleteClicked"/>
+                            </Grid>               
+                    </DataTemplate>
+                    <!--                  
                     <DataTemplate>
                         <ViewCell Height="80">
                             <Grid Padding="0" Margin="10"
@@ -203,8 +265,6 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
-                                    
-                                    
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Row="0"
                                        Grid.RowSpan="2"
@@ -235,21 +295,23 @@
                                              VerticalOptions="End"
                                              Clicked="OnButtonUpdateClicked"/>
                                 <ImageButton Grid.Row="3" 
-                                                         Grid.Column="3"
-                                                         Grid.ColumnSpan="2"
-                                                         Padding="2.5"
-                                                         Source="bin.png"
-                                                         HeightRequest="0"
-                                                         WidthRequest="0"
-                                                         HorizontalOptions="End"
-                                                         VerticalOptions="End"
-                                                         CommandParameter="{Binding Id}"
-                                                         Clicked="OnButtonDeleteClicked"/>
+                                             Grid.Column="3"
+                                             Grid.ColumnSpan="2"
+                                             Padding="2.5"
+                                             Source="bin.png"
+                                             HeightRequest="0"
+                                             WidthRequest="0"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="End"
+                                             CommandParameter="{Binding Id}"
+                                             Clicked="OnButtonDeleteClicked"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    -->
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <!-- Piechart-->
             <VerticalStackLayout>
                 <VerticalStackLayout>
