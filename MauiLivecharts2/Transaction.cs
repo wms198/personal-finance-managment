@@ -9,8 +9,7 @@ public class Transaction
     private DateTime date;
     private int id;
     private string imageUrl;
-  
-
+    
     public Transaction(int id)
     {
         this.id = id;
