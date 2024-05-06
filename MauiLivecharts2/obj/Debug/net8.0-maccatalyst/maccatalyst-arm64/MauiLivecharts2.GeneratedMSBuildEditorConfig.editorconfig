@@ -40,6 +40,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MauiLivecharts2.MainPage.x
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
+[/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/PiechartModel.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiLivecharts2.PiechartModel.xaml
+build_metadata.AdditionalFiles.TargetPath = PiechartModel.xaml
+build_metadata.AdditionalFiles.RelativePath = PiechartModel.xaml
+
 [/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiLivecharts2.Resources.Styles.Colors.xaml

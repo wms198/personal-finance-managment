@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MauiLivecharts2.Viewmodel;
+using Microsoft.Extensions.Logging;
 
 namespace MauiLivecharts2;
 using Microsoft.Maui.Controls.Hosting;
@@ -23,7 +24,8 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPageViewModel>();
         return builder.Build();
     }
 }

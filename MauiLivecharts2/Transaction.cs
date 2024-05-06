@@ -83,7 +83,7 @@ public class IntToColorConverter : IValueConverter
         Decimal v = (Decimal)value;
         if (v <= 0)
             return Color.FromRgb(255, 0, 0);
-        return Color.FromRgb(10, 200, 10);
+        return Color.FromRgb(10, 180, 40);
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

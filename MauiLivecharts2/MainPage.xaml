@@ -3,47 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiLivecharts2;assembly=MauiLivecharts2"
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
-             x:Class="MauiLivecharts2.MainPage">
-    <ContentPage.BindingContext>
-        <local:Piechart/>
-    </ContentPage.BindingContext>
+             xmlns:viewmodel="clr-namespace:MauiLivecharts2.Viewmodel"
+             x:Class="MauiLivecharts2.MainPage"
+             x:DataType="viewmodel:MainPageViewModel">
+
     <ContentPage.Resources>
         <local:IntToColorConverter x:Key="intToColor" />
     </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
+        
+        <VerticalStackLayout 
             Spacing="25"
             x:Name="VLayout">
-
-            <Image
-                Source="me.heic"
-                Margin="10"
-                HeightRequest="170"
-                Aspect="AspectFit"
-                SemanticProperties.Description="profile pic" />
-
-            <Label
-                Text="Hello, YOU!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-            <!-- Income / expense buttons -->
-            <HorizontalStackLayout Margin="20" HorizontalOptions="Center">
-                    <ImageButton
-                        Source="delete.png"
-                        Margin="10"
-                        HeightRequest="50"
+            <Grid Margin="0, 120,0,0">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image
+                        Source="me.heic"
+                        HeightRequest="170"
                         Aspect="AspectFit"
-                        Clicked="ToggleExpenses"/>
-                    <ImageButton
-                        Source="circle.png"
-                        Margin="10"
-                        HeightRequest="50"
-                        Aspect="AspectFit"
-                        Clicked="ToggleIncomes"/>
-            </HorizontalStackLayout> 
+                        SemanticProperties.Description="profile pic" />
+                    <Label
+                        Text="Hello, YOU!"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level1" />
+                        <!-- Income / expense buttons -->
+                    <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Center">
+                            <ImageButton
+                                Source="delete.png"
+                                HeightRequest="50"
+                                Margin="5,0,15,0"
+                                VerticalOptions="End"
+                                Aspect="AspectFit"
+                                Clicked="ToggleExpenses"/>
+                            <ImageButton
+                                Source="circle.png"
+                                HeightRequest="50"
+                                Margin="15,0,0,0"
+                                VerticalOptions="End"
+                                Aspect="AspectFit"
+                                Clicked="ToggleIncomes"/>
+                    </HorizontalStackLayout> 
+                    <VerticalStackLayout HorizontalOptions="End">
+                        <ImageButton 
+                            Source="piechart.png"
+                            HeightRequest="50"
+                            Margin="1200,0,0,0"
+                            CommandParameter="piechart"
+                            Command="{Binding }"
+                            Clicked="OnPieChartButtonClicked"/>
+                        <Label Text="Visualise me"
+                               Margin="1200,0,0,0"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
             <!-- Expense categories -->
-            <HorizontalStackLayout Margin="20" HorizontalOptions="Center" x:Name="ExpensesContainer" IsVisible="False">
+            <HorizontalStackLayout  HorizontalOptions="Center" x:Name="ExpensesContainer" IsVisible="False">
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
                         <VerticalStackLayout Margin="20">
@@ -53,6 +67,7 @@
                                     HeightRequest="50"
                                     Aspect="AspectFit"
                                     CommandParameter="vegetable"
+                                    Command="{Binding }"
                                     Clicked="OnExpenseButtonClicked"/>
                             <Label Text="Vegtable"
                                 HorizontalOptions="Center"
@@ -124,7 +139,7 @@
                 </VerticalStackLayout>
             </HorizontalStackLayout>
             <!-- income categories -->
-            <HorizontalStackLayout Margin="20" HorizontalOptions="Center" x:Name="IncomesContainer" IsVisible="False">
+            <HorizontalStackLayout  HorizontalOptions="Center" x:Name="IncomesContainer" IsVisible="False">
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
                         <VerticalStackLayout Margin="20">
@@ -181,167 +196,102 @@
                 </VerticalStackLayout>
             </HorizontalStackLayout>
             <!-- LIstView  -->
-            <CollectionView 
+            <Grid Grid.Row="1">
+            <CollectionView Margin="250,0"
                             x:Name="ListView"
-                            IsGrouped="True">
+                            IsGrouped="True"
+                            ItemsSource="{Binding Transactions}">
                 <CollectionView.GroupHeaderTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding Date, StringFormat='{0:dd-MM-yy}'}" TextColor="Black" VerticalOptions="CenterAndExpand"
-
-                                   FontSize="20"
-                                   FontAttributes="Bold" />
-                        </StackLayout>
+                    <DataTemplate x:DataType="{x:Type local:Transaction}">
+                        
+                        <HorizontalStackLayout HeightRequest="40">
+                            <Label Text="{Binding Date, StringFormat='{0:dd-MM-yy}'}" 
+                                   TextDecorations="Underline"
+                                   VerticalOptions="CenterAndExpand"
+                                   FontSize="25"
+                                   FontAttributes="Bold" 
+                                   HorizontalOptions="Center"
+                                   />
+                            <Label Margin="10"></Label>
+                        </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
-
-                    <DataTemplate>
-                            <Grid Padding="0" Margin="10"
-                                  VerticalOptions="Center">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="15" />
-                                    <RowDefinition Height="15" />
-                                    <RowDefinition Height="15" />
-                                    <RowDefinition Height="15" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <Image Grid.Row="3" Grid.Column="0"
-                                       Source="{Binding ImageUrl}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="30"
-                                       WidthRequest="30" 
-                                       HorizontalOptions= "Start"/>
-                                <Label Grid.Row="3" 
-                                       Grid.Column="0"
-                                       Text="{Binding Path=Value}"
-                                       TextColor="{Binding Path=Value, Converter={StaticResource intToColor}}"
-                                       FontAttributes="Italic"
-                                       HorizontalOptions="End" />
-                                <ImageButton Grid.Row="3" 
-                                             Grid.Column="1"
-                                             Grid.ColumnSpan="2"
-                                             Padding="3.5"
-                                             Source="modify.png"
-                                             HeightRequest="-30"
-                                             WidthRequest="-30"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="End"
-                                             Clicked="OnButtonUpdateClicked"/>
-                                <ImageButton Grid.Row="3" 
-                                             Grid.Column="3"
-                                             Grid.ColumnSpan="2"
-                                             Padding="2.5"
-                                             Source="bin.png"
-                                             HeightRequest="0"
-                                             WidthRequest="0"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="End"
-                                             CommandParameter="{Binding Id}"
-                                             Clicked="OnButtonDeleteClicked"/>
-                            </Grid>               
+                    <DataTemplate  x:DataType="{x:Type local:Transaction}">
+                        <HorizontalStackLayout Padding="60, 0">
+                            <Image Grid.Row="1" Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="40"
+                                   WidthRequest="40" 
+                                   HorizontalOptions= "Start"/>
+                            <Label Grid.Row="1" 
+                                    Grid.RowSpan="2"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="2"
+                                     WidthRequest="100" 
+                                     Text="{Binding Path=Value}"
+                                     TextColor="{Binding Path=Value, Converter={StaticResource intToColor}}"
+                                     FontAttributes="Italic"
+                                     Margin="0,20,0 ,0 "
+                                     FontSize="22"
+                                     HorizontalTextAlignment="End"
+                                     SemanticProperties.HeadingLevel="Level3"
+                                     HorizontalOptions="End" />
+                            <ImageButton Grid.Row="2" 
+                                     Grid.Column="3"
+                                     Grid.ColumnSpan="2"
+                                     Padding="8"
+                                     Source="edit.png"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="End"
+                                     Aspect="AspectFill"
+                                     Margin="0,10,0 ,0 "
+                                     HeightRequest="40"
+                                     WidthRequest="40" 
+                                     Clicked="OnButtonUpdateClicked"/>
+                            <ImageButton Grid.Row="2" 
+                                         Grid.Column="3"
+                                         Grid.ColumnSpan="2"
+                                         Padding="8"
+                                         Source="bin5.png"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="End"
+                                         Aspect="AspectFill"
+                                         HeightRequest="40"
+                                         WidthRequest="40" 
+                                         CommandParameter="{Binding Id}"
+                                         Clicked="OnButtonDeleteClicked"/> 
+                            <Grid Padding="100,0" Margin="50,0"
+                                  VerticalOptions="Center"
+                                  HeightRequest="60"
+                                  IsVisible="False">
+                                  <Grid.RowDefinitions>
+                                        <RowDefinition Height="15"></RowDefinition>
+                                        <RowDefinition Height="15"></RowDefinition>
+                                        <RowDefinition Height="15"></RowDefinition>
+                                        <RowDefinition Height="15"></RowDefinition>
+                                  </Grid.RowDefinitions>
+                                  <Grid.ColumnDefinitions >
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition Width="50" />
+                                  </Grid.ColumnDefinitions>
+                            </Grid>   
+                        </HorizontalStackLayout>       
                     </DataTemplate>
-                    <!--                  
-                    <DataTemplate>
-                        <ViewCell Height="80">
-                            <Grid Padding="0" Margin="10"
-                                  VerticalOptions="Center">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="15" />
-                                    <RowDefinition Height="15" />
-                                    <RowDefinition Height="15" />
-                                    <RowDefinition Height="15" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0"
-                                       Grid.RowSpan="2"
-                                       FontSize="22"
-                                       Text ="{Binding Path=Date,StringFormat='{0:dd-MM-yy}'}"
-                                       FontAttributes="Italic,Bold"
-                                       VerticalOptions="Center" />
-                                <Image Grid.Row="3" Grid.Column="0"
-                                       Source="{Binding ImageUrl}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="30"
-                                       WidthRequest="30" 
-                                       HorizontalOptions= "Start"/>
-                                <Label Grid.Row="3" 
-                                       Grid.Column="0"
-                                       Text="{Binding Path=Value}"
-                                       TextColor="{Binding Path=Value, Converter={StaticResource intToColor}}"
-                                       FontAttributes="Italic"
-                                       HorizontalOptions="End" />
-                                <ImageButton Grid.Row="3" 
-                                             Grid.Column="1"
-                                             Grid.ColumnSpan="2"
-                                             Padding="3.5"
-                                             Source="modify.png"
-                                             HeightRequest="-30"
-                                             WidthRequest="-30"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="End"
-                                             Clicked="OnButtonUpdateClicked"/>
-                                <ImageButton Grid.Row="3" 
-                                             Grid.Column="3"
-                                             Grid.ColumnSpan="2"
-                                             Padding="2.5"
-                                             Source="bin.png"
-                                             HeightRequest="0"
-                                             WidthRequest="0"
-                                             HorizontalOptions="End"
-                                             VerticalOptions="End"
-                                             CommandParameter="{Binding Id}"
-                                             Clicked="OnButtonDeleteClicked"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                    -->
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <!-- Piechart-->
-            <VerticalStackLayout>
-                <VerticalStackLayout>
-                    <ImageButton 
-                        Source="piechart.png"
-                        Clicked="OnImageButtonClicked"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" 
-                        HeightRequest="100"
-                        WidthRequest="100"/>
-                    <Label Text="Visualize reports"
-                           HorizontalOptions="Center"
-                           Margin="0,-10,0,50"
-                           FontSize="15"/>
-                    <lvc:PieChart Margin="130,0,0,0"
-                                  HeightRequest="300"
-                                  x:Name="PieChart"
-                                  Series="{Binding Series}"
-                                  LegendPosition="Right"
-                                  IsVisible="False">
-                        
-                    </lvc:PieChart>
-                </VerticalStackLayout>
-            </VerticalStackLayout>
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
-<!--Text="{Binding Date}"
-
- Text="{Binding Source={x:Reference slider},
-                                       Path=Value,
-                                       StringFormat='{0:D}'}"-->
+<!--Text="___________"
+TextColor="Blue"
+TextDecorations="Underline"-->

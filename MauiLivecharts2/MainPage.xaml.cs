@@ -1,49 +1,19 @@
 ﻿using System.Diagnostics;
+using MauiLivecharts2.Viewmodel;
 
 namespace MauiLivecharts2;
 
 public partial class MainPage : ContentPage
 {
-    int count = 0;
-    private bool isExpense;
-    private List<Transaction> transactions = new List<Transaction>();
-    private List<Transaction> push_dates{ get; set; } = new List<Transaction>();
-    private  List<Grouped_list> new_list { get; set; } = new List<Grouped_list>();
-    public List<Transaction> Transactions
-    {
-        get { return transactions; }
-        set { transactions = value; }
-    }
-
-    public MainPage()
+    
+    public MainPage(MainPageViewModel vm)
     {
         InitializeComponent();
+        BindingContext = vm;
         DBtransaction.Verbinden();
-        //new_list = DBtransaction.SelectByDate();
-        ListView.ItemsSource = DBtransaction.SelectByDate();
-        
+        Update();
     }
-    
-    private async void OnImageButtonClicked(object sender, EventArgs e)
-    {
-        bool answer = await DisplayAlert("", "Which Piechart do you want to know?", "Incomes", "Expenses");
-        
-        Debug.WriteLine("Answer: " + answer);
-        var chartModel = (Piechart)PieChart.BindingContext;
-        if(answer){
-            Console.WriteLine(answer);
-            chartModel.update(answer);
-            PieChart.IsVisible = true;
-            PieChart.Series = chartModel.Series;
-        }
-        else
-        {
-            Console.WriteLine(answer);
-            chartModel.update(answer);
-            PieChart.IsVisible = true;
-            PieChart.Series = chartModel.Series;
-        }
-    }
+
     private void ToggleIncomes(object? sender, EventArgs e)
     {
         if (ExpensesContainer.IsVisible == true)
@@ -67,7 +37,7 @@ public partial class MainPage : ContentPage
         ImageButton i = (ImageButton)sender;
         string category = i.CommandParameter.ToString();
         Console.WriteLine($"Catagory: {category} ");
-        Navigation.PushAsync(new DetailPageExpenses(category, true, ListView));
+        Navigation.PushAsync(new DetailPageExpenses(category, true, BindingContext as MainPageViewModel));
         
     }
     private void OnIncomeButtonClicked(object? sender, EventArgs e)
@@ -75,8 +45,22 @@ public partial class MainPage : ContentPage
         ImageButton i = (ImageButton)sender;
         string category = i.CommandParameter.ToString();
         Console.WriteLine($"Catagory: {category} ");
-        Navigation.PushAsync(new DetailPageExpenses(category, false, ListView));
-    }  
+        Navigation.PushAsync(new DetailPageExpenses(category, false,  BindingContext as MainPageViewModel));
+    }
+
+    private async void OnPieChartButtonClicked(object? sender, EventArgs e)
+    {
+        bool isIncome = await DisplayAlert("", "Which Piechart do you want to see?", "Income", "Expenses");
+        Debug.WriteLine("Answer: " + isIncome);
+
+        Navigation.PushAsync(new PiechartModel(new PiechartViewModel(isIncome), isIncome));
+    }
+    public void Update()
+    {
+        ((MainPageViewModel)BindingContext).Update();
+    }
+    
+    
     private void OnButtonDeleteClicked(object sender, EventArgs e)
     {
         var i = (ImageButton)sender;
@@ -85,7 +69,7 @@ public partial class MainPage : ContentPage
         //int id = Convert.ToInt32(i.CommandParameter);
         Console.WriteLine(t.Id);
         DBtransaction.DeleteTransaction(t);
-        ListView.ItemsSource = DBtransaction.SelectTransactions();
+        Update();
     }
 
     private async void OnButtonUpdateClicked(object sender, EventArgs args)
@@ -93,7 +77,7 @@ public partial class MainPage : ContentPage
         ImageButton i = (ImageButton)sender;
         Transaction t = (Transaction)i.BindingContext;
         
-        await Navigation.PushAsync(new DetailPageExpenses(t, ListView));
+        await Navigation.PushAsync(new DetailPageExpenses(t,  BindingContext as MainPageViewModel));
         Console.WriteLine($"\n\n\nthe price is{t.Value}");
     }
 }

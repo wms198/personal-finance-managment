@@ -4,51 +4,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiLivecharts2.DetailPageExpenses"
-             Title="DetaiPage">
-    <!--<ContentPage.Content>
-    </ContentPage.Content>-->
-    <StackLayout>
+             Title="DetailPage">
+
+    <StackLayout VerticalOptions="Center">
         
-        <HorizontalStackLayout>
-            <Label 
-                   FontSize="25"
-                   Margin="0,15,0,30"
-                   x:Name="Headline"/>
-            <Entry 
-                x:Name="preise"
-                Placeholder="Enter text"
-                PlaceholderColor = "IndianRed"
-                MaxLength ="1000"
-                ClearButtonVisibility="WhileEditing"
-                Completed="OnEntryPreis"/>
-        </HorizontalStackLayout>
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                <ImageButton 
+                Source="back.png"
+                        HeightRequest="50"
+                        Margin="0,50,0,0"
+                        Aspect="AspectFit"
+                        Clicked ="BackToMainPage">
+                </ImageButton>
+            
+                <HorizontalStackLayout
+                    Margin="0,30"
+                    HorizontalOptions="Center">
+                    <Label 
+                           FontSize="40"
+                           x:Name="Headline"/>
+                    <Entry 
+                        x:Name="preise"
+                        FontSize="30"
+                        TextColor="#49A0B1"
+                        Placeholder="Enter amount"
+                        PlaceholderColor = "#49A0B1"
+                        MaxLength ="1000"
+                        
+                        ClearButtonVisibility="WhileEditing"
+                        Completed="OnEntryPreis"/>
+                </HorizontalStackLayout>
         
-        <VerticalStackLayout x:Name="VLayout">
-            <HorizontalStackLayout>
-                <Label Text="On which date?"
-                       FontSize="25"
-                       Margin="0,30"/>
-                <DatePicker 
-                    MinimumDate="01/01/2024"
-                    x:Name="DatePicker"/>
-               <Button 
-                    x:Name="CounterBtn"
-                    Text="Confirm"
-                    Clicked="OnEntryDate" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout>
-            <Entry x:Name="entry"
-                   Placeholder="Date"/>
-            </HorizontalStackLayout>   
-        </VerticalStackLayout>
+                <HorizontalStackLayout
+                    HorizontalOptions="Center">
+                    <Label Text="On which date ?"
+                           FontSize="40"/>
+                    <DatePicker 
+                        MinimumDate="01/01/2024"
+                        FontSize="30"
+                        Margin="10,20,0,0"
+                        x:Name="DatePicker"/>
+                </HorizontalStackLayout>
+            
         
-        <FlexLayout Margin ="0,10,0,0"
+                <FlexLayout Margin ="0,20,0,0"
                     JustifyContent= "SpaceAround" >
-        <Button 
-                Clicked="OnButtonEInsertClicked" 
-                x:Name="ButtonName"/>
-        </FlexLayout>
- 
+                <Button 
+                    BackgroundColor="#49A0B1"
+                    FontSize="20"
+                    Clicked="OnButtonEInsertClicked"
+                    HeightRequest="50"
+                    x:Name="ButtonName"/>
+                </FlexLayout>
+            </VerticalStackLayout>
        
     </StackLayout>
 </ContentPage>

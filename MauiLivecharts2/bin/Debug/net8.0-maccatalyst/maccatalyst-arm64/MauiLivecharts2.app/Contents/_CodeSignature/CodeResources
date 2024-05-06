@@ -36,9 +36,25 @@
 		<data>
 		L9cHAOVSlaW2jMaBgy7GlIBZdZg=
 		</data>
+		<key>Resources/back.png</key>
+		<data>
+		fvNFRqW5SpACS5ThnVlS7YULWIc=
+		</data>
 		<key>Resources/bin.png</key>
 		<data>
 		Cc4fdYoaEhp3MmKRssrTKXPctsk=
+		</data>
+		<key>Resources/bin2.png</key>
+		<data>
+		LqT/mSp9mk7AWVRfpNsSEv63olU=
+		</data>
+		<key>Resources/bin3.png</key>
+		<data>
+		G6w0+ERBktCIiqAg/jRsrTUUCko=
+		</data>
+		<key>Resources/bin5.png</key>
+		<data>
+		sXLhlu55hR4oi3OCHPlTUHzmMUs=
 		</data>
 		<key>Resources/bonus.png</key>
 		<data>
@@ -64,6 +80,10 @@
 		<data>
 		Zt+VE+uuJQUze/d9zd3r+NdrtDw=
 		</data>
+		<key>Resources/edit.png</key>
+		<data>
+		H/6piZZLZEkBOeK+Ls5nJfR/T+E=
+		</data>
 		<key>Resources/financing.png</key>
 		<data>
 		1VwrcMt3VPlSePV2mQ0Hz8fTpIE=
@@ -88,9 +108,25 @@
 		<data>
 		TthQC6gz3172sOOtO6/y/LRuFPk=
 		</data>
+		<key>Resources/pencil.png</key>
+		<data>
+		/Wyau9opU1MYxNsWHNJP+F4ERWI=
+		</data>
 		<key>Resources/piechart.png</key>
 		<data>
 		QEo6QUSFm+ogMrh4dCd/pskXRCQ=
+		</data>
+		<key>Resources/piechart1.png</key>
+		<data>
+		4W+67SFix1MVYNeaHlYQ0yK8q4w=
+		</data>
+		<key>Resources/piechart1@2x.png</key>
+		<data>
+		wv5wf8AduKHAcUOSWOGfOmG8aaQ=
+		</data>
+		<key>Resources/piechart1@3x.png</key>
+		<data>
+		kxx63kY8QNHA6OJ7jWJAL4A9dW4=
 		</data>
 		<key>Resources/rent.png</key>
 		<data>
@@ -191,14 +227,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Piz3NG8ZUnfQJP0oXW1pWgjklIigYcx+kjz/Hn5A8tg=
+			IosWagAdDFwbqF8kQ09W3TEU6OvmZi1agZXNqvZgT4w=
 			</data>
 		</dict>
 		<key>MonoBundle/MauiLivecharts2.pdb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QJnhxG/bTsHIwTctlsjuB4n7+Jzb7gyEcD4f5fxD7UU=
+			yMrIX0pbSNjYH55E9BSCPr3NkZSD2PgaG6Zgu6J37kQ=
 			</data>
 		</dict>
 		<key>MonoBundle/Microsoft.CSharp.dll</key>
@@ -1860,11 +1896,39 @@
 			H4w+DqGNITnXOEy4UxkSBph9BjGxHf/ui2zq6lzv5a0=
 			</data>
 		</dict>
+		<key>Resources/back.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			y8nsF0tLgs4nfApp485rUmDQsOR2jz29yI6CsEVFRQw=
+			</data>
+		</dict>
 		<key>Resources/bin.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			H7De3/luUY1fbjicFghsFng9YMQjzMWjYNjrH4i9iYc=
+			</data>
+		</dict>
+		<key>Resources/bin2.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Dp3c0IP6POBY6oFue3b6gguizZLhkvrXqnw6C7RC+R8=
+			</data>
+		</dict>
+		<key>Resources/bin3.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			8p+PTHeq2dlVScZQLcmfDqvhPpMm6PBlnsdJgQCAqY0=
+			</data>
+		</dict>
+		<key>Resources/bin5.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+LjJD4S3/ymP62EsJ+XYaKhueidmz1QZAnPUK/z/DA0=
 			</data>
 		</dict>
 		<key>Resources/bonus.png</key>
@@ -1909,6 +1973,13 @@
 			Up4t4C3+oRoTqJRc+zJSfhbhdg8R3zWbHkE+G9N4B9U=
 			</data>
 		</dict>
+		<key>Resources/edit.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DOBm9DfSvJNrVttRVRcwo/6XlVNjDxz4qBmR7QNnfFw=
+			</data>
+		</dict>
 		<key>Resources/financing.png</key>
 		<dict>
 			<key>hash2</key>
@@ -1951,11 +2022,39 @@
 			orkttCrMxF+NGmF46WQty0H3+1pzGIKeaC2PLbyKfZM=
 			</data>
 		</dict>
+		<key>Resources/pencil.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1KYoczRIu6OrUgFkNKdis4ttBR70JfmnsU5yQ3V89Lo=
+			</data>
+		</dict>
 		<key>Resources/piechart.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			LLxljL1O7yxCHUkTt6Fl/yV7Q9+Rk416SATPhp/K5vM=
+			</data>
+		</dict>
+		<key>Resources/piechart1.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			s9OlxkZ33wxAEyrkNgtliz4MdD6taLjs/MkHw2hDS8c=
+			</data>
+		</dict>
+		<key>Resources/piechart1@2x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gXinA30Q2m2Usnrabo+7AivwdXAXN3V246A9OKL1W4s=
+			</data>
+		</dict>
+		<key>Resources/piechart1@3x.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M37GRuIKC5kDehLvUp536tnLXNRKvBy5oVTFrzMIvdI=
 			</data>
 		</dict>
 		<key>Resources/rent.png</key>

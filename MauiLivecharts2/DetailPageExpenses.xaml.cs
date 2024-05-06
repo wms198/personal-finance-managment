@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CoreFoundation;
 using Intents;
+using MauiLivecharts2.Viewmodel;
 
 namespace MauiLivecharts2;
 
@@ -17,20 +18,20 @@ public partial class DetailPageExpenses : ContentPage
     private string explanation;
     private string explanationExpense = "Expenses";
     private string explanationIncomes = "Incomes";
-    private string expenseHeadline = "How much money did you spend?";
-    private string incomeHeadline = "How much money did you get?";
-    private string updateHeadline = "How do you want to change it?";
+    private string expenseHeadline = "How much money did you spend ? ";
+    private string incomeHeadline = "How much money did you get ? ";
+    private string updateHeadline = "How do you want to change it ? ";
     private string bTNInsert = "Insert";
     private string bTNUpdate = "Update";
-    private CollectionView _listView;
+    private MainPageViewModel _parent;
     private Transaction _transaction;
 
-    public DetailPageExpenses(string category, bool isExpense, CollectionView listView)
+    public DetailPageExpenses(string category, bool isExpense, MainPageViewModel parent)
     {
         //Insert item
         this.category = category;
         this.isExpense = isExpense;
-        _listView = listView;
+        _parent = parent;
         InitializeComponent();
         DBtransaction.Verbinden();
         if (isExpense)
@@ -38,15 +39,14 @@ public partial class DetailPageExpenses : ContentPage
         else
             Headline.Text = incomeHeadline;
         ButtonName.Text = bTNInsert;
-        Console.WriteLine(listView.Id);
     }
 
-    public DetailPageExpenses(Transaction transaction, CollectionView listView)
+    public DetailPageExpenses(Transaction transaction, MainPageViewModel parent)
     {
         //Update item
         InitializeComponent();
         _transaction = transaction;
-        _listView = listView;
+        _parent = parent;
         Headline.Text = updateHeadline;
         preise.Text = Math.Abs(transaction.Value).ToString();
         DatePicker.Date = transaction.Date;
@@ -58,13 +58,6 @@ public partial class DetailPageExpenses : ContentPage
         string text = ((Entry)sender).Text;
         //Console.WriteLine(text);
         preise.Text = text;
-    }
-    void OnEntryDate(object sender, EventArgs e)
-    {
-        String date = DatePicker.Date.ToString();
-        entry.Text = date;
-        
-        //Console.WriteLine($"Date: {DatePicker.Date.ToString()}");
     }
 
     private async void OnButtonEInsertClicked(object sender, EventArgs args)
@@ -86,10 +79,11 @@ public partial class DetailPageExpenses : ContentPage
         {
             Transaction transaction = new Transaction(category, value, DatePicker.Date, imageUrl);
             DBtransaction.InsertTransaction(transaction);
-            bool answer = await DisplayAlert("", "Do you want to add more?", "Yes", "No");
+            bool answer = await DisplayAlert($"{category}", "Do you want to add more?", "Yes", "No");
             Console.WriteLine("Answer: " + answer);
             if (!answer)
             {
+                //await Navigation.PushAsync( new ContentPage());
                 Navigation.PopToRootAsync();
                 Console.WriteLine("byebye");
             }
@@ -101,9 +95,14 @@ public partial class DetailPageExpenses : ContentPage
             DBtransaction.UpdateTransaction(_transaction);
             Navigation.PopToRootAsync();
         }
-        this._listView.ItemsSource = DBtransaction.SelectTransactions();
-    
+        _parent.Update();
+    }
+
+    private void BackToMainPage(object sender, EventArgs args)
+    {
+        Navigation.PopToRootAsync();
+        
     }
     
 
-}
+} 

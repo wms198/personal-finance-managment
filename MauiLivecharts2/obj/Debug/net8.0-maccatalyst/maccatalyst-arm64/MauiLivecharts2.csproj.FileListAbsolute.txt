@@ -271,9 +271,6 @@
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/mauifont.inputs
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/mauisplash.inputs
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/mauisplash.stamp
-/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/dotnet_bot@3x.png
-/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/dotnet_bot@2x.png
-/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/dotnet_bot.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Assets.xcassets/appicon.appiconset/appiconItunesArtwork.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Assets.xcassets/appicon.appiconset/appicon83.5x83.5@2x.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Assets.xcassets/appicon.appiconset/appicon76x76@2x.png
@@ -321,13 +318,14 @@
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/fruit.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/salary.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/me.heic
-/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/snack.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/financing.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/modify.png
-/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/add.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/bin/Debug/net8.0-maccatalyst/maccatalyst-arm64/CommunityToolkit.Mvvm.dll
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/piechart.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/fish.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/sundries.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/sports.png
 /Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/bonus.png
+/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/back.png
+/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/edit.png
+/Users/wangshi/RiderProjects/MauiLivecharts2/MauiLivecharts2/obj/Debug/net8.0-maccatalyst/maccatalyst-arm64/resizetizer/r/Resources/bin5.png

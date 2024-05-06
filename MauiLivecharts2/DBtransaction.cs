@@ -7,6 +7,7 @@ public class Categoryresult
 {
     public string name;
     public decimal value;
+    
 
     public Categoryresult(string name, decimal value)
     {
@@ -40,6 +41,7 @@ public class DBtransaction
 
     public static List<Categoryresult> CatgoriesIncomes()
     {
+       
         connection = new MySqlConnection(connectionString);
         connection.Open();
         string sql = "SELECT category, SUM(value) as value FROM transaction where value > 0 GROUP by category;";
@@ -79,7 +81,7 @@ public class DBtransaction
         connection = new MySqlConnection(connectionString);
         connection.Open();
         Console.WriteLine("Connection is successful for Select");
-        string sql = "SELECT * FROM transaction order by date ASC;";
+        string sql = "SELECT * FROM transaction order by date DESC;";
         MySqlCommand command = new MySqlCommand(sql, connection);
         MySqlDataReader reader = command.ExecuteReader();
         List<Transaction> push_dateList = new List<Transaction>();
@@ -110,7 +112,7 @@ public class DBtransaction
         connection = new MySqlConnection(connectionString);
         connection.Open();
         Console.WriteLine("Connection is successful for Select");
-        string sql = "SELECT * FROM transaction order by date desc;";
+        string sql = "SELECT * FROM transaction order by date DESC;";
         MySqlCommand command = new MySqlCommand(sql, connection);
         MySqlDataReader reader = command.ExecuteReader();
         List<Transaction> transactionList = new List<Transaction>();

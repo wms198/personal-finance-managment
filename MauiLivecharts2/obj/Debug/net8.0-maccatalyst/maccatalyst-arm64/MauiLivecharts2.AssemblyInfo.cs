@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MauiLivecharts2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+c9454be739d17397f2305628c45d632c0e6e6257")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+a273f5d1b7c0f4923300560215bb3eb88b50a3f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MauiLivecharts2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MauiLivecharts2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

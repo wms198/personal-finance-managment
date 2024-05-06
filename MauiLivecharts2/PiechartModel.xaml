@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiLivecharts2;assembly=MauiLivecharts2"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             xmlns:viewmodel="clr-namespace:MauiLivecharts2"
+             x:Class="MauiLivecharts2.PiechartModel"
+             Title="PieChart"
+             x:DataType="viewmodel:PiechartViewModel">
+        
+        <StackLayout VerticalOptions="Center">
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center" >
+                <ImageButton 
+                    Source="back.png"
+                    HeightRequest="50"
+                    Margin="0,50,0,0"
+                    Aspect="AspectFit"
+                    Clicked ="BackToMainPage">
+                </ImageButton>
+                <VerticalStackLayout>
+                    <lvc:PieChart Margin="130,0,0,0"
+                                  HeightRequest="300"
+                                  x:Name="PieChart"
+                                  Series="{Binding Series}"
+                                  LegendPosition="Right">
+                    </lvc:PieChart>
+                    <Label  
+                           Text="{Binding Headline}"
+                           x:Name="Headline"
+                           HorizontalOptions="Center"
+                           VerticalOptions="End"
+                           FontSize="30"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="Center" 
+                                     Margin="0,30,0,0">
+                    <ImageButton 
+                        Source="piechart.png"
+                        HeightRequest="50"
+                        
+                        CommandParameter="piechart"
+                        Command="{Binding }"
+                        Clicked="OnToggle"/>
+                    <Label Text="Click me" 
+                           FontSize="15"
+                           HorizontalOptions="Center"
+                           VerticalOptions="End"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </StackLayout>
+</ContentPage>
