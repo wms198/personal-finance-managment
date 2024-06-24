@@ -17,5 +17,8 @@ public partial class MainPageViewModel : ObservableObject
     {
         this.Transactions = DBtransaction.SelectByDate();
     }
-    
+    public void Update(List<Grouped_list> transactions)
+    {
+        this.Transactions = transactions;
+    }
 }
